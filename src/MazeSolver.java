@@ -75,20 +75,15 @@ public class MazeSolver {
 	// adjacentPoints and marking the path
 	// for each adjacentPoint it calls itself to see if it has reached the goal mark
 	public static boolean solveMazeHelper(Maze maze, Point currentPoint) {
-		if (maze.get(currentPoint) == TextMaze.GOAL) 
-		{
+		if (maze.get(currentPoint) == TextMaze.GOAL) {
 			return true;
-		} 
-		else if (maze.get(currentPoint) != TextMaze.EMPTY) 
-		{
+		} else if (maze.get(currentPoint) != TextMaze.EMPTY) {
 			return false;
 		}
 		maze.set(currentPoint, TextMaze.PATH);
 		Point[] adjPoints = currentPoint.getAdjacentPoints();
-		for (int i = 0; i < adjPoints.length; i++) 
-		{
-			if (maze.inBounds(adjPoints[i])) 
-			{
+		for (int i = 0; i < adjPoints.length; i++) {
+			if (maze.inBounds(adjPoints[i])) {
 				boolean isMazeSolved = solveMazeHelper(maze, adjPoints[i]);
 
 				if (isMazeSolved) 
@@ -97,8 +92,10 @@ public class MazeSolver {
 				}
 			}
 		}
+
 		maze.set(currentPoint, TextMaze.VISITED);
 		return false;
+
 	}
 
 	// solveMaze solves the maze by setting the goal point and then calling the
