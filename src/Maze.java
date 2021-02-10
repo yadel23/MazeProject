@@ -20,60 +20,69 @@ public class Maze implements TextMaze {
 	private int _width, _height;
 
 	// makes it so that the maze coordinates start from the bottom left corner.
-	public Maze(int width, int height) {
+	public Maze(int width, int height) 
+	{
 		_width = width;
 		_height = height;
 		maze = new char[_width][_height];
 
-		for (int i = 0; i < _height; i++) {
-			for (int j = 0; j < _width; j++) {
+		for (int i = 0; i < _height; i++) 
+		{
+			for (int j = 0; j < _width; j++) 
+			{
 				maze[j][i] = TextMaze.EMPTY;
 			}
 		}
 	}
 
 	// sets a chosen character at a given point if it is in bounds
-	public void set(Point p, char c) {
-		if (!inBounds(p)) {
+	public void set(Point p, char c) 
+	{
+		if (!inBounds(p)) 
+		{
 			throw new PointOutOfBoundsException(p.toString());
 		} else
 			maze[p.x][p.y] = c;
 	}
 
 	// gets the point in the maze from the Point class
-	public char get(Point p) {
-		if (!inBounds(p)) {
+	public char get(Point p) 
+	{
+		if (!inBounds(p)) 
+		{
 			throw new PointOutOfBoundsException(p.toString());
 		} else
 			return maze[p.x][p.y];
 	}
 
-	public int width() {
-		return _width;
-	}
+	public int width() { return _width; }
 
-	public int height() {
-		return _height;
-	}
+	public int height() { return _height; }
 
 	// checks if the given point is in bounds.
 	// the width and height has to be less then the wall boarder
-	public boolean inBounds(Point p) {
-		if (p.x < _width && p.y < _height && p.x >= 0 && p.y >= 0) {
+	public boolean inBounds(Point p) 
+	{
+		if (p.x < _width && p.y < _height && p.x >= 0 && p.y >= 0) 
+		{
 			return true;
 		} else
 			return false;
 	}
 
 	// used to print the maze
-	public String toString() {
+	public String toString() 
+	{
 		StringBuilder strB = new StringBuilder();
 
-		for (int i = _height - 1; i >= 0; i--) {
-			for (int j = 0; j < _width; j++) {
+		for (int i = _height - 1; i >= 0; i--) 
+		{
+			for (int j = 0; j < _width; j++) 
+			{
 				strB.append(maze[j][i]);
 			}
-			if (i != 0) {
+			if (i != 0) 
+			{
 				strB.append("\n");
 			}
 		}
@@ -105,17 +114,24 @@ public class Maze implements TextMaze {
 	}
 
 	// used to save the maze after the maze has been solved
-	public static void saveMaze(String filename, Maze maze) {
+	public static void saveMaze(String filename, Maze maze) 
+	{
 		loadMaze(filename);
 		PrintWriter fileWriter = null;
-		try {
+		try 
+		{
 			fileWriter = new PrintWriter(new File(filename));
 			fileWriter.println(maze.width() + " " + maze.height());
 			fileWriter.println(maze.toString());
-		} catch (IOException e) {
+		} 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
-		} finally {
-			if (fileWriter != null) {
+		} 
+		finally 
+		{
+			if (fileWriter != null) 
+			{
 				fileWriter.close();
 			}
 		}

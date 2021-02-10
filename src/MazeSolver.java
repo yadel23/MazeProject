@@ -7,9 +7,11 @@
  */
 import java.util.Scanner;
 
-public class MazeSolver {
+public class MazeSolver 
+{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		System.out.println("what is the name of your maze file?");
 		Scanner scanner = new Scanner(System.in);
 		String userInput = scanner.nextLine();
@@ -86,8 +88,7 @@ public class MazeSolver {
 			if (maze.inBounds(adjPoints[i])) {
 				boolean isMazeSolved = solveMazeHelper(maze, adjPoints[i]);
 
-				if (isMazeSolved) 
-				{
+				if (isMazeSolved) {
 					return true;
 				}
 			}
@@ -111,7 +112,6 @@ public class MazeSolver {
 			return true;
 		} else
 			return false;
-
 	}
 
 }
