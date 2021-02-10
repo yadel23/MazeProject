@@ -57,8 +57,10 @@ public class MazeSolver {
 			p2 = new Point(userInput1, userInput2);
 		}
 
-		// this is where the maze is going to be solved by using the solveMaze and solveMazeHelper
-		// when the maze is solved it saves the maze as a new maze with .solved in its name
+		// this is where the maze is going to be solved by using the solveMaze and
+		// solveMazeHelper
+		// when the maze is solved it saves the maze as a new maze with .solved in its
+		// name
 		// if the maze was not solved it will give a prompt that says so
 		if (solveMaze(maze, p, p2)) {
 			System.out.println(maze.toString());
@@ -66,33 +68,37 @@ public class MazeSolver {
 			System.out.println("the maze was solved:)");
 		} else
 			System.out.println("the maze was not solved:(");
-			System.out.println(maze.toString());
+		System.out.println(maze.toString());
 	}
 
 	// this method helps the solveMaze method by recursively searching the points
 	// adjacentPoints and marking the path
 	// for each adjacentPoint it calls itself to see if it has reached the goal mark
 	public static boolean solveMazeHelper(Maze maze, Point currentPoint) {
-		if (maze.get(currentPoint) == TextMaze.GOAL) {
+		if (maze.get(currentPoint) == TextMaze.GOAL) 
+		{
 			return true;
-		} else if (maze.get(currentPoint) != TextMaze.EMPTY) {
+		} 
+		else if (maze.get(currentPoint) != TextMaze.EMPTY) 
+		{
 			return false;
 		}
 		maze.set(currentPoint, TextMaze.PATH);
 		Point[] adjPoints = currentPoint.getAdjacentPoints();
-		for (int i = 0; i < adjPoints.length; i++) {
-			if (maze.inBounds(adjPoints[i])) {
+		for (int i = 0; i < adjPoints.length; i++) 
+		{
+			if (maze.inBounds(adjPoints[i])) 
+			{
 				boolean isMazeSolved = solveMazeHelper(maze, adjPoints[i]);
 
-				if (isMazeSolved) {
+				if (isMazeSolved) 
+				{
 					return true;
 				}
 			}
 		}
-
 		maze.set(currentPoint, TextMaze.VISITED);
 		return false;
-
 	}
 
 	// solveMaze solves the maze by setting the goal point and then calling the
